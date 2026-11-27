@@ -11,7 +11,7 @@ Place/keep the project folder under Laragon's web root, for example:
 C:\laragon\www\live website\DemoMeatShop\sandbox-live-website
 ```
 Default app URL (localhost path): `http://localhost/live%20website/DemoMeatShop/sandbox-live-website/`  
-If you use a Laragon virtual host/pretty URL (e.g. `http://cursor-project-system.test`), set `base_url` in `config/app.php` accordingly (e.g. empty string or `/` depending on your host root). If links/assets break, fix `base_url` first.
+The local `base_url` is set for this workspace. For another URL, set the `APP_BASE_URL` environment variable to the app's public base URL (for example, `https://meatshop.example.com` for a domain root or `https://example.com/shop` for a subdirectory). Configure this variable in your web host's environment settings; the code default remains for Laragon.
 
 ## 3. Database setup (phpMyAdmin / MySQL)
 1. In Laragon, click **Start All** (or ensure Apache/Nginx and MySQL are running).
@@ -91,7 +91,7 @@ Python scripts connect to the **same MySQL database** used by PHP.
 - Use the header language selector (English / Filipino). Preference is stored in session; simple translations live in `assets/lang/en.php` and `assets/lang/fil.php`.
 
 ## 8. Troubleshooting
-- **404 / wrong paths / broken CSS/links:** Check `base_url` in `config/app.php` matches how you access the app (for this workspace, `/live%20website/DemoMeatShop/sandbox-live-website/`; spaces encoded as `%20`).
+- **404 / wrong paths / broken CSS/links:** Set `APP_BASE_URL` to the URL path where the app is served. If unset, `config/app.php` uses this workspace's local Laragon path.
 - **Database connection error:** Verify MySQL is running in Laragon and credentials/port in `config/database.php` (try `127.0.0.1`, correct port if changed).
 - **Blank page / PHP errors:** Enable error display in Laragon's PHP settings (`php.ini`) for local dev or check Apache/Nginx/PHP logs from Laragon.
 - **Permission issues (uploads/backups):** Ensure `uploads/` subfolders are writable by the web server/PHP.

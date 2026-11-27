@@ -10,7 +10,7 @@ return [
     'tagline' => 'Web-Based Inventory Management System',
     'timezone' => 'Asia/Manila',
     'base_path' => str_replace('\\', '/', dirname(__DIR__)),
-    'base_url' => '/live%20website/DemoMeatShop/sandbox-live-website/',
+    'base_url' => getenv('https://gitrem0te.github.io/DemoMeatShop/') ?: '/live%20website/DemoMeatShop/sandbox-live-website/',
     'default_language' => 'en',
     'supported_languages' => ['en', 'fil'],
     'currency_symbol' => '₱',

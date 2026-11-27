@@ -33,9 +33,9 @@ After importing `database/come_n_meatshop_db_schema.sql` and `database/come_n_me
 3. Open phpMyAdmin/HeidiSQL (Laragon menu → Database) and import into database `come_n_meatshop_db`:
    - Import `database/come_n_meatshop_db_schema.sql`
    - Import `database/come_n_meatshop_db_sample_data.sql`
-4. Verify DB config in `config/database.php` (defaults: host `127.0.0.1`, port `3306`, user `root`, empty password, db `come_n_meatshop_db`) and `base_url` in `config/app.php` (default `/live%20website/DemoMeatShop/sandbox-live-website/` for this workspace).
+4. Verify DB config in `config/database.php` (defaults: host `127.0.0.1`, port `3306`, user `root`, empty password, db `come_n_meatshop_db`). The local `base_url` default is `/live%20website/DemoMeatShop/sandbox-live-website/`; on your web host, set `APP_BASE_URL` to your public URL (for example, `https://meatshop.example.com`).
 5. Open: `http://localhost/live%20website/DemoMeatShop/sandbox-live-website/login.php`
-6. Log in with default Admin/Staff accounts. If you use a Laragon virtual host/pretty URL, update `base_url` in `config/app.php` to match.
+6. Log in with default Admin/Staff accounts. For a Laragon virtual host or another URL, set `APP_BASE_URL` to the URL where the app is served.
 
 See [SETUP_INSTRUCTIONS.md](SETUP_INSTRUCTIONS.md) for details, Python setup, and troubleshooting.
 
@@ -72,4 +72,4 @@ Configure DB via environment variables if needed: `DB_HOST`, `DB_PORT`, `DB_USER
 ## Notes
 - PDF export uses browser **Print → Save as PDF** (no external PDF library dependency).
 - Payment-method filtering is not included in sales reports by design.
-- `base_url` in `config/app.php` must match how you access the app in Laragon (localhost subpath or virtual host). Update it if links/assets redirect incorrectly.
+- `APP_BASE_URL` can be set in the hosting environment to match the public app URL. If unset, `config/app.php` uses this workspace's Laragon URL.
