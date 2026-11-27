@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Inventory report | Come N' Meatshop</title><link rel="stylesheet" href="css/style.css"></head>
+<body><header id="app-header"></header><main class="page"><div id="global-message" class="notice" hidden></div>
+<div class="page-header"><div><h1>Inventory report</h1><p class="subtitle">Admin-only stock, categories, expiry alerts and movement history</p></div><a href="reports-sales.html">Sales report</a></div>
+<div class="toolbar"><button id="inventory-csv" class="button button-outline">Download CSV</button></div>
+<div id="inventory-report-summary" class="grid"></div>
+<section class="card table-wrap" style="margin-top:16px"><h2>Current inventory</h2><table><thead><tr><th>Name</th><th>Category</th><th>Type</th><th>Price</th><th>Unit</th><th>Stock</th><th>Min</th><th>Expiry</th><th>Status</th></tr></thead><tbody id="inventory-report-rows"></tbody></table></section>
+<section class="card table-wrap" style="margin-top:16px"><h2>Stock movements (latest 200)</h2><table><thead><tr><th>Date</th><th>Product</th><th>Type</th><th>Change</th><th>Before</th><th>After</th><th>Remarks</th><th>By</th></tr></thead><tbody id="movement-rows"></tbody></table></section>
+</main><script type="module" src="js/reports.js"></script></body></html>

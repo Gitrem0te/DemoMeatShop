@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign in | Come N' Meatshop</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main class="login-wrap">
+    <section class="login-card">
+        <h1>Come N' Meatshop</h1>
+        <p class="muted">Internal inventory and point-of-sale system</p>
+        <div id="login-message" class="notice" hidden></div>
+        <form id="login-form">
+            <div class="field"><label for="email" data-i18n="email">Email</label><input id="email" name="email" type="email" autocomplete="username" required></div>
+            <div class="field"><label for="password" data-i18n="password">Password</label><input id="password" name="password" type="password" autocomplete="current-password" required></div>
+            <button class="button" type="submit" data-i18n="login">Sign in</button>
+        </form>
+        <p class="footer-note">Use the email and password created in Supabase Auth.</p>
+    </section>
+</main>
+<script type="module" src="js/auth.js"></script>
+<script type="module">
+    import { isSupabaseConfigured, supabase } from './js/supabase.js';
+    import { message } from './js/auth.js';
+    import { applyTranslations } from './js/i18n.js';
+
+    applyTranslations();
+    const form = document.getElementById('login-form');
+    if (!isSupabaseConfigured) {
+        message('login-message', 'Configure SUPABASE_URL and SUPABASE_ANON_KEY in js/supabase.js before signing in.', 'warning');
+    } else {
+        const { data } = await supabase.auth.getSession();
+        if (data.session) location.replace('dashboard.html');
+    }
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        if (!supabase) return;
+        const button = form.querySelector('button');
+        button.disabled = true;
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email: form.email.value.trim(),
+            password: form.password.value
+        });
+        button.disabled = false;
+        if (error) {
+            message('login-message', error.message, 'error');
+            return;
+        }
+        const { data: profile, error: profileError } = await supabase
+            .from('profiles').select('status').eq('id', data.user.id).maybeSingle();
+        if (profileError || !profile || profile.status !== 'Active') {
+            await supabase.auth.signOut();
+            message('login-message', profileError?.message || 'This account is inactive.', 'error');
+            return;
+        }
+        location.replace('dashboard.html');
+    });
+</script>
+</body>
+</html>

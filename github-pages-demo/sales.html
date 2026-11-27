@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Point of sale | Come N' Meatshop</title><link rel="stylesheet" href="css/style.css"></head>
+<body><header id="app-header"></header><main class="page"><div id="global-message" class="notice" hidden></div>
+<div class="page-header"><div><h1>Record sale</h1><p class="subtitle">Internal POS — add items, review totals, then confirm</p></div><a href="sales-history.html">Sales history</a></div>
+<form id="sale-form" class="grid">
+    <section class="card col-8"><div class="page-header"><h2>Line items</h2><button class="button button-outline button-small" id="add-line" type="button">Add item</button></div><div id="sale-lines"></div>
+        <div class="field"><label for="customer_name">Customer (optional)</label><input id="customer_name" name="customer_name" placeholder="Walk-in"></div>
+        <div class="field"><label for="remarks">Remarks</label><input id="remarks" name="remarks"></div>
+    </section>
+    <section class="card col-4"><h2>Payment and totals</h2>
+        <div class="field"><label for="discount_percent">Discount (%)</label><input id="discount_percent" name="discount_percent" type="number" min="0" max="100" step="0.01" value="0"></div>
+        <div class="field"><label for="vat_rate_percent">VAT (%)</label><input id="vat_rate_percent" name="vat_rate_percent" type="number" min="0" max="100" step="0.01" value="12"></div>
+        <div class="field"><label for="payment_method">Payment method</label><select id="payment_method" name="payment_method"><option>Cash</option><option>GCash</option></select></div>
+        <div class="field"><label for="amount_paid">Amount paid</label><input id="amount_paid" name="amount_paid" type="number" min="0" step="0.01" required></div>
+        <div id="sale-totals" class="summary-list"></div><button class="button" type="submit">Review sale</button>
+    </section>
+</form></main><script type="module" src="js/sales.js"></script></body></html>

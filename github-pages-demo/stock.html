@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Add stock | Come N' Meatshop</title><link rel="stylesheet" href="css/style.css"></head>
+<body><header id="app-header"></header><main class="page"><div id="global-message" class="notice" hidden></div>
+<div class="page-header"><div><h1 data-i18n="addStock">Add stock</h1><p class="subtitle" id="stock-product-summary"></p></div><a href="inventory.html">Back to inventory</a></div>
+<form id="stock-form" class="card" style="max-width:600px"><div id="stock-message" class="notice" hidden></div>
+    <div class="field"><label for="product_id">Product</label><select id="product_id" name="product_id" required></select></div>
+    <div class="field"><label for="quantity">Quantity to add</label><input id="quantity" name="quantity" type="number" min="0.001" step="0.001" required></div>
+    <div class="field"><label for="remarks">Remarks</label><input id="remarks" name="remarks" value="Restock delivery"></div>
+    <button class="button" type="submit" data-i18n="save">Save</button>
+</form></main><script type="module" src="js/inventory.js"></script></body></html>

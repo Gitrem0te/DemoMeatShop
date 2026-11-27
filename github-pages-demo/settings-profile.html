@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Profile settings | Come N' Meatshop</title><link rel="stylesheet" href="css/style.css"></head>
+<body><header id="app-header"></header><main class="page"><div id="global-message" class="notice" hidden></div>
+<div class="page-header"><div><h1 data-i18n="profile">Profile</h1><p class="subtitle">Update your contact details and language</p></div></div>
+<form id="profile-form" class="card" style="max-width:720px"><div id="profile-message" class="notice" hidden></div>
+    <div class="grid"><div class="field col-6"><label for="full_name">Full name</label><input id="full_name" name="full_name" required></div><div class="field col-6"><label for="email">Email (managed by Supabase Auth)</label><input id="email" name="email" type="email" required></div>
+    <div class="field col-6"><label for="phone">Phone</label><input id="phone" name="phone"></div><div class="field col-6"><label for="language_preference">Language</label><select id="language_preference" name="language_preference"><option value="en">English</option><option value="fil">Filipino</option></select></div></div>
+    <button class="button" type="submit" data-i18n="save">Save</button>
+</form>
+<form id="password-form" class="card" style="max-width:720px;margin-top:16px"><h2>Change password</h2><div id="password-message" class="notice" hidden></div><div class="field"><label for="new-password">New password</label><input id="new-password" name="password" type="password" minlength="6" required></div><button class="button" type="submit">Update password</button></form>
+</main><script type="module" src="js/auth.js"></script><script type="module" src="js/users.js"></script></body></html>

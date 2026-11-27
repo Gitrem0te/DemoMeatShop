@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Inventory | Come N' Meatshop</title><link rel="stylesheet" href="css/style.css"></head>
+<body><header id="app-header"></header><main class="page"><div id="global-message" class="notice" hidden></div>
+<div class="page-header"><div><h1 data-i18n="inventory">Inventory</h1><p class="subtitle">Products, stock levels, and expiry tracking</p></div><a class="button" id="add-product-link" href="inventory-form.html">Add product</a></div>
+<form id="inventory-filters" class="toolbar">
+    <input name="q" type="search" placeholder="Search name, type, barcode or category">
+    <select name="status"><option value="Active">Active</option><option value="Inactive">Inactive</option><option value="Archived">Archived</option><option value="Deleted">Deleted</option><option value="all">All statuses</option></select>
+    <select name="filter"><option value="">All stock states</option><option value="low">Low stock</option><option value="out">Out of stock</option><option value="near">Near expiry</option><option value="expired">Expired</option></select>
+    <button class="button button-outline" type="submit" data-i18n="search">Search</button>
+</form>
+<section class="card table-wrap"><table><thead><tr><th>Product</th><th>Category</th><th>Price</th><th>Stock</th><th>Expiry</th><th>Status</th><th>Actions</th></tr></thead><tbody id="inventory-rows"><tr><td colspan="7">Loading…</td></tr></tbody></table></section>
+</main><script type="module" src="js/inventory.js"></script></body></html>

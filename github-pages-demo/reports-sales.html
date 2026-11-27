@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Sales report | Come N' Meatshop</title><link rel="stylesheet" href="css/style.css"></head>
+<body><header id="app-header"></header><main class="page"><div id="global-message" class="notice" hidden></div>
+<div class="page-header"><div><h1>Sales report</h1><p class="subtitle">Admin-only totals, products, staff and sales trend</p></div><a href="reports-inventory.html">Inventory report</a></div>
+<form id="sales-report-filters" class="toolbar"><label>From <input name="from" type="date" required></label><label>To <input name="to" type="date" required></label><select name="group"><option value="daily">Daily</option><option value="weekly">Weekly</option><option value="monthly">Monthly</option></select><button class="button" type="submit">Generate</button><button class="button button-outline" type="button" id="sales-csv">Download CSV</button></form>
+<div id="sales-report-message" class="notice" hidden></div><section id="sales-report-summary" class="grid"></section>
+<section class="card chart-box"><canvas id="sales-chart" aria-label="Sales trend"></canvas></section>
+<section class="grid" style="margin-top:16px"><article class="card col-6"><h2>Sales by product</h2><div id="report-products" class="table-wrap"></div></article><article class="card col-6"><h2>Sales by staff</h2><div id="report-staff" class="table-wrap"></div></article></section>
+</main><script type="module" src="js/reports.js"></script></body></html>
